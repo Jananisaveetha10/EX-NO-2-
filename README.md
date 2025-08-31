@@ -35,9 +35,56 @@ STEP-5: Display the obtained cipher text.
 
 
 Program:
+```
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    unsigned int a[3][3]={{6,24,1},{13,16,10},{20,17,15}};
+    unsigned int b[3][3]={{8,5,10},{21,8,21},{21,12,8}};
+    int i,j, t=0;
+    unsigned int c[20],d[20];
+    char msg[20];
+    scanf("%s",msg);
+    printf("Enter plain text:%s\n",msg);
+
+    for(i=0;i<strlen(msg);i++)
+    {
+        c[i]=msg[i]-65;
+        printf("%d ",c[i]);
+    }
+    for(i=0;i<3;i++)
+    {
+        t=0;
+        for(j=0;j<3;j++)
+        {
+            t=t+(a[i][j]*c[j]);
+        }
+        d[i]=t%26;
+    }
+    printf("\nEncrypted Cipher Text :");
+    for(i=0;i<3;i++)
+    printf(" %c",d[i]+65);
+    for(i=0;i<3;i++)
+    {
+        t=0;
+        for(j=0;j<3;j++)
+        {
+            t=t+(b[i][j]*d[j]);
+        }
+        c[i]=t%26;
+    }
+    printf("\nDecrypted Cipher Text :");
+    for(i=0;i<3;i++)
+    printf(" %c",c[i]+65);
+    return 0;
+}
+```
 
 
 
 
 
 Output:
+<img width="1631" height="896" alt="Screenshot 2025-08-31 190732" src="https://github.com/user-attachments/assets/7171cb82-80c7-453b-ae70-7318d2bf016c" />
+
